@@ -1,0 +1,43 @@
+ #include <iostream>
+    using namespace std;
+
+    int main()
+    {
+        int stanKonta = 2500;   // stan naszego konta; gdy zaczynamy korzystaæ z bankomatu mamy 2500 z³
+        int kwota;              // kwota, któr¹ bedziemy wyplacaæ z bankomatu
+
+        // na poczatku programu informujemy uzytkownika ile ma kasy
+        cout << "Stan twojego konta: "      // ten cout jest zapisany w dwoch liniach zamiast jednej
+            << stanKonta << endl << endl;   // zauwaz, ze srednik jest tylko na koncu drugiej linii
+            								// podwójny endl oznacza pusty jeden akapit
+
+        while( stanKonta > 0 ) // warunek wykonania -> musimy miec PLN na koncie, aby wyplaciæ
+        {
+            cout << "Podaj kwote" << endl;
+            cin >> kwota; // u¿ytkownik wpisuje kwotê; zwróæ uwagê, ¿e strza³ki s¹ w drug¹ stronê ni¿ przy cout
+            
+            if (kwota>0 && kwota <= stanKonta) // czy u¿ytkownik ma na koncie tyle pieniêdzy, ile chce wyplaciæ?
+            {
+                stanKonta = stanKonta - kwota; // to samo mozna zapisac jako: stanKonta -= kwota;
+                cout << "Wyplaciles pieniadze. Stan twojego konta po tej operacji: "
+                    << stanKonta << endl << endl;
+            }
+            else if (kwota<0)
+            {
+            	cout << "Kwota musi byc dodatnia." << endl << endl;
+            	continue;
+			}
+			else if (kwota==0)
+			{
+				break; // powoduje przerwanie pêtli i przejœcie bezpoœrednio do instrukcji po pêtli
+			}
+            else    // chcesz wyplaciæ wiecej niz masz pieniêdzy na koncie
+            {
+                cout << "Nie masz tyle Kasy! Masz: "
+                << stanKonta << endl << endl;
+            }
+        }
+
+        cout << "Dziekujemy za korzystanie z naszego bankomatu.\n";
+        return 0;
+    }    
